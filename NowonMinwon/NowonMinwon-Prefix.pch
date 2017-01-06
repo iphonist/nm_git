@@ -1,0 +1,50 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "AppDelegate.h"
+#import "CustomUIKit.h"
+#import "SQLiteDBManager.h"
+#import "ResourceLoader.h"
+#import "SharedFunctions.h"
+
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFJSONRequestOperation.h"
+#import "AFImageRequestOperation.h"
+#import "JSONKit.h"
+#import "CBNavigationController.h"
+#import "HTTPExceptionHandler.h"
+//#import "Countly.h"
+//#import <Crashlytics/Crashlytics.h>
+#import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "SDImageCache.h"
+
+
+#define SharedAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+
+#define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+#define oscode @"1"
+#define IS_HEIGHT568 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define updateLink @"itms-apps://itunes.apple.com/kr/app/id982863686" 
+
+#ifdef DEBUG
+#define NSLog(s, ...) NSLog(@"<%@(%d):%s> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __FUNCTION__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#else
+#define NSLog(s, ...)// NSLog(@"<%@(%d):%s> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __FUNCTION__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#endif
+
+#endif
