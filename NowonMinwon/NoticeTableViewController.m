@@ -72,7 +72,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"cellForRow");
+//    NSLog(@"cellForRow");
     static NSString *CellIdentifier = @"Cell";
     //		NSString *email;
     UILabel *title, *date;
@@ -156,7 +156,7 @@
     NSDictionary *dic = [myList[indexPath.row][@"content"]objectFromJSONString];
     title.text = dic[@"title"];
     content.text = dic[@"msg"];
-    NSLog(@"content.text %@",content.text);
+//    NSLog(@"content.text %@",content.text);
     
     CGSize size = [title.text sizeWithFont:title.font constrainedToSize:CGSizeMake(280, 10000) lineBreakMode:UILineBreakModeWordWrap];
     title.frame = CGRectMake(10, 8 , 280, size.height);
@@ -171,7 +171,7 @@
     {
         contentImage.userInteractionEnabled = YES;
         //        contentImageView.hidden = NO;
-        NSLog(@"imageString %@",imageString);
+//        NSLog(@"imageString %@",imageString);
         
         
         NSArray *imageArray = [imageString objectFromJSONString][@"thumbnail"];
@@ -182,14 +182,14 @@
                 sizeDic = [imageString objectFromJSONString][@"thumbnailinfoarray"][i];
             else
                 sizeDic = [imageString objectFromJSONString][@"thumbnailinfo"];
-            NSLog(@"sizeDic %@",sizeDic);
+//            NSLog(@"sizeDic %@",sizeDic);
             CGFloat imageScale = 0.0f;
             imageScale = 280/[sizeDic[@"width"]floatValue];
             
             UIImageView *inImageView = [[UIImageView alloc]init];
             inImageView.frame = CGRectMake(0,imageHeight,280,imageScale * [sizeDic[@"height"]floatValue]);
             imageHeight += inImageView.frame.size.height + 10;
-            NSLog(@"inimageview frame %@",NSStringFromCGRect(inImageView.frame));
+//            NSLog(@"inimageview frame %@",NSStringFromCGRect(inImageView.frame));
             inImageView.backgroundColor = [UIColor blackColor];
             [inImageView setContentMode:UIViewContentModeScaleAspectFill];//AspectFill];//AspectFit];//ToFill];
             [inImageView setClipsToBounds:YES];
@@ -224,7 +224,7 @@
             [cell.contentView addSubview:viewImageButton];
             [viewImageButton release];
             [inImageView release];
-            NSLog(@"viewImageButton %@ tag %d",viewImageButton,i);
+//            NSLog(@"viewImageButton %@ tag %d",viewImageButton,i);
             
             //                    contentImageView.backgroundColor = [UIColor blackColor];
             //                        viewImageButton.backgroundColor = [UIColor redColor];
@@ -305,11 +305,11 @@
 }
 - (void)viewImage:(id)sender{
     
-    NSLog(@"viewImage");
+//    NSLog(@"viewImage");
     NSString *imageString = [[sender titleLabel]text];
     NSDictionary *imgDic = [imageString objectFromJSONString];
     NSString *imgUrl = [NSString stringWithFormat:@"https://%@%@%@",imgDic[@"server"],imgDic[@"dir"],imgDic[@"filename"][[sender tag]-1]];
-    NSLog(@"imgUrl %@",imgUrl);
+//    NSLog(@"imgUrl %@",imgUrl);
     
     UIViewController *photoCon;
     
@@ -329,7 +329,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelect");
+//    NSLog(@"didSelect");
 }
 
 /*

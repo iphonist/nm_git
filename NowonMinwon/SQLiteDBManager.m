@@ -40,7 +40,7 @@
 		
 //		NSError *error;
 		[fileManager copyItemAtPath:filePathFromApp toPath:dbFilePath error:nil];
-		NSLog(@"Database file copied from bundle to %@",dbFilePath);
+//		NSLog(@"Database file copied from bundle to %@",dbFilePath);
 //		if (error) {
 //			NSLog(@"DB File Copy Err %@",[error localizedDescription]);
 //		}
@@ -121,7 +121,7 @@
 	if (sqlite3_open([dbfilePath UTF8String], &database) == SQLITE_OK) {
         
         NSString *sqlString = [NSString stringWithFormat:@"SELECT id, deptcode, parentdeptcode, deptname, dept_phone, dept_desc, is_active, sequence FROM DEPT where is_active='%@' group by deptcode",@"1"];
-        NSLog(@"sqlstring %@",sqlString);
+//        NSLog(@"sqlstring %@",sqlString);
         const char *sql = [sqlString UTF8String]; //"SELECT id, deptcode, parentdeptcode, deptname, dept_phone, dept_desc, is_active, sequence FROM DEPT group by deptcode where is_active='%@'",@"1";
 		sqlite3_stmt *statement;
 		
@@ -139,16 +139,16 @@
                                      [NSString stringWithUTF8String:((char *)sqlite3_column_text(statement, 6)!=nil?(char *)sqlite3_column_text(statement, 6):"")],@"is_active",
                                      [NSString stringWithUTF8String:((char *)sqlite3_column_text(statement, 7)!=nil?(char *)sqlite3_column_text(statement, 7):"")],@"sequence",
                                      nil];
-                NSLog(@"dic %@",dic);
+//                NSLog(@"dic %@",dic);
                 [resultArray addObject:dic];
             }
         } else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 
     } else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
     [dbManager release];
@@ -188,12 +188,12 @@
                 [resultArray addObject:dic];
             }
         } else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 		
     } else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
     [dbManager release];
@@ -202,7 +202,7 @@
 
 + (BOOL)addDept:(NSMutableArray *)array
 {
-    NSLog(@"addDept %@",array);
+//    NSLog(@"addDept %@",array);
     
 	BOOL success = NO;
     SQLiteDBManager *dbManager = [[SQLiteDBManager alloc] init];
@@ -242,7 +242,7 @@
                 sqlite3_bind_text(statement, 7, [sequence UTF8String], -1, SQLITE_TRANSIENT);
 
 					if(sqlite3_step(statement) != SQLITE_DONE) {
-						NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//						NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 					}
 					sqlite3_clear_bindings(statement);
 					sqlite3_reset(statement);
@@ -256,12 +256,12 @@
 				success = YES;
 			}
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 
     } else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);	
     [dbManager release];
@@ -306,16 +306,16 @@
                 sqlite3_bind_text(statement, 7, [sequence UTF8String], -1, SQLITE_TRANSIENT);
 				
 				if(sqlite3_step(statement) != SQLITE_DONE) {
-					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 				}
                 FREEMEM(encdeptname);
                 FREEMEM(encdept_phone);
 			} else {
-				NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 			}
 			sqlite3_finalize(statement);
 		} else {
-			NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//			NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 		}
 		sqlite3_close(database);
 		[dbManager release];
@@ -373,7 +373,7 @@
 					sqlite3_bind_text(statement, 7, [sequence UTF8String], -1, SQLITE_TRANSIENT);
 					
 					if(sqlite3_step(statement) != SQLITE_DONE) {
-						NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//						NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 					}
 					sqlite3_clear_bindings(statement);
 					sqlite3_reset(statement);
@@ -395,11 +395,11 @@
 //			}
 //			[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProfiles" object:nil];
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 	} else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
     [dbManager release];
@@ -453,10 +453,10 @@
                 
 				
 				if(sqlite3_step(statement) != SQLITE_DONE) {
-					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 				}
 			} else {
-				NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 			}
 			sqlite3_finalize(statement);
             
@@ -467,7 +467,7 @@
 //			[[[ResourceLoader sharedInstance] cache_profileImageDirectory] addObject:@{@"uid": Uniqueid, @"profileimage": ProfileImage}];
 //			[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProfiles" object:nil];
 		} else {
-			NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//			NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 		}
 		sqlite3_close(database);
 		[dbManager release];
@@ -510,14 +510,14 @@
 			}
 			
 			if (sqlite3_step(statement) != SQLITE_DONE) {
-				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 			}
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 	} else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
 	[dbManager release];
@@ -543,7 +543,7 @@
 				sqlite3_bind_text(statement, 1, [uniqueid UTF8String], -1, SQLITE_TRANSIENT);
 				
 				if(sqlite3_step(statement) != SQLITE_DONE) {
-					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 				}
 				sqlite3_clear_bindings(statement);
 				sqlite3_reset(statement);
@@ -553,12 +553,12 @@
 			}
 			
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 		
     } else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
     [dbManager release];
@@ -598,14 +598,14 @@
 			}
 
 			if (sqlite3_step(statement) != SQLITE_DONE) {
-				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 			}
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 	} else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
 	[dbManager release];
@@ -631,7 +631,7 @@
 				sqlite3_bind_text(statement, 1, [code UTF8String], -1, SQLITE_TRANSIENT);
 				
 				if(sqlite3_step(statement) != SQLITE_DONE) {
-					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//					NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 				}
 				sqlite3_clear_bindings(statement);
 				sqlite3_reset(statement);
@@ -641,12 +641,12 @@
 			}
 			
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 		
     } else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
     [dbManager release];
@@ -796,7 +796,7 @@
 		
 		NSString *sqlString = [NSString stringWithFormat:@"UPDATE CONTACT set name=?,officephone=?,uid=?,deptcode=?,is_active=?,employeinfo=?,sequence=? where uid='%@'",uid];
 		
-		NSLog(@"sqlString %@",sqlString);
+//		NSLog(@"sqlString %@",sqlString);
 		
 		if(sqlite3_prepare_v2(database, [sqlString UTF8String], -1, &statement, NULL) == SQLITE_OK) {
 			
@@ -814,10 +814,10 @@
             
 		
 			if(sqlite3_step(statement) != SQLITE_DONE) {
-				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 			}
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
         
@@ -827,7 +827,7 @@
 //		[[ResourceLoader sharedInstance] cache_profileImageDirectoryUpdateObjectAtUID:Uniqueid andProfileImage:ProfileImage];
 //		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshProfiles" object:nil];
 	} else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
 	[dbManager release];
@@ -916,16 +916,16 @@
 
 			
 			if(sqlite3_step(statement) != SQLITE_DONE)	{
-				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
+//				NSLog(@"step != done error message : %s",sqlite3_errmsg(database));
 			}
             FREEMEM(encdeptname);
             FREEMEM(encdept_phone);
 		} else {
-			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
+//			NSLog(@"prepare != ok error message : %s",sqlite3_errmsg(database));
 		}
 		sqlite3_finalize(statement);
 	} else {
-		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
+//		NSLog(@"SQL OPEN FAILED code %s",sqlite3_errmsg(database));
 	}
 	sqlite3_close(database);
 	[dbManager release];

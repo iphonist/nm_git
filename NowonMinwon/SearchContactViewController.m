@@ -143,7 +143,7 @@ const char alertNumber;
 //        searching = YES;
         
         if([searchText hasPrefix:@"0"] || [searchText hasPrefix:@"1"] || [searchText hasPrefix:@"2"] || [searchText hasPrefix:@"3"] || [searchText hasPrefix:@"4"] || [searchText hasPrefix:@"5"] || [searchText hasPrefix:@"6"] || [searchText hasPrefix:@"7"] || [searchText hasPrefix:@"8"] || [searchText hasPrefix:@"9"]){
-            NSLog(@"firstCharacter number");
+//            NSLog(@"firstCharacter number");
             for(int i = 0 ; i < [myList count] ; i++)
             {
                 searchDic = [NSMutableDictionary dictionaryWithDictionary:myList[i]];
@@ -156,7 +156,7 @@ const char alertNumber;
             }
         }
         else{
-            NSLog(@"firstCharacter else");
+//            NSLog(@"firstCharacter else");
             
             for(int i = 0 ; i < [myList count] ; i++)
             {
@@ -182,7 +182,7 @@ const char alertNumber;
     else
     {
         subLabel.hidden = NO;
-        NSLog(@"text not exist %f",self.view.frame.size.height);
+//        NSLog(@"text not exist %f",self.view.frame.size.height);
         
         [searchBar becomeFirstResponder];
         myTable.userInteractionEnabled = NO;
@@ -382,7 +382,7 @@ const char alertNumber;
     
 
         if(self.selectedRowIndex.row == indexPath.row && expanded){
-            NSLog(@"here");
+//            NSLog(@"here");
             self.selectedRowIndex = nil;
             expanded = NO;
             
@@ -390,7 +390,7 @@ const char alertNumber;
             
         }
         else{
-            NSLog(@"here expand");
+//            NSLog(@"here expand");
             self.selectedRowIndex = indexPath;
             expanded = YES;
         }
@@ -402,7 +402,7 @@ const char alertNumber;
 }
 - (void)cmdButton:(id)sender{
     NSString *phonenumber = [[sender titleLabel]text];
-    NSLog(@"phonenumber %@",phonenumber);
+//    NSLog(@"phonenumber %@",phonenumber);
     
     
     if([sender tag] == kCall){

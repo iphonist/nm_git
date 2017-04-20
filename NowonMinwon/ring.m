@@ -25,18 +25,18 @@
 
 static void sip_ring_callback(CFRunLoopTimerRef timer, void *info)
 {
-    NSLog(@"sip_ring_callback");
+//    NSLog(@"sip_ring_callback");
 //    AudioServicesPlayAlertSound(ring_id);
 }
 static void sip_vib_callback(CFRunLoopTimerRef timer, void *info)
 {
-    NSLog(@"sip_vib_callback");
+//    NSLog(@"sip_vib_callback");
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 void sip_ring_init()//(NSString *bell)
 {
-    NSLog(@"sip_ring_init %@",ring_vib_timer);
+//    NSLog(@"sip_ring_init %@",ring_vib_timer);
     if(ring_vib_timer)
         return;
     
@@ -67,7 +67,7 @@ void sip_ring_init()//(NSString *bell)
 
 void sip_ring_start()
 {
-    NSLog(@"sip_ring_start %@",ring_vib_timer);
+//    NSLog(@"sip_ring_start %@",ring_vib_timer);
     if (++ring_cnt == 1)
     {
         
@@ -92,7 +92,7 @@ void sip_ring_start()
         char *app_config_vib;
         CFRunLoopTimerContext context_vib = {0, (void *)app_config_vib, NULL, NULL, NULL};
         
-        NSLog(@"ring_vib_timer");
+//        NSLog(@"ring_vib_timer");
         ring_vib_timer = CFRunLoopTimerCreate(kCFAllocatorDefault,
                                               CFAbsoluteTimeGetCurrent(),
                                               2.,
@@ -106,7 +106,7 @@ void sip_ring_start()
 
 void sip_ring_stop()
 {
-    NSLog(@"sip_ring_stop");
+//    NSLog(@"sip_ring_stop");
 	if (--ring_cnt == 0)
 	{
 		// UInt32 route = kAudioSessionOverrideAudioRoute_None;
@@ -124,7 +124,7 @@ void sip_ring_stop()
 
 void sip_ring_deinit()
 {
-    NSLog(@"sip_ring_deinit");
+//    NSLog(@"sip_ring_deinit");
 //    if (ring_timer)
 //    {
 //        NSLog(@"ring_timer");
@@ -135,7 +135,7 @@ void sip_ring_deinit()
 //    }
     if (ring_vib_timer)
     {
-        NSLog(@"ring_vib_timer");
+//        NSLog(@"ring_vib_timer");
         CFRunLoopRemoveTimer (CFRunLoopGetMain(), ring_vib_timer, 
                               kCFRunLoopCommonModes);
         CFRelease(ring_vib_timer);

@@ -1543,7 +1543,7 @@
 				OTHER_CFLAGS = "-DDEV_IPHONE";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "11b3a840-2aee-4995-84e4-17a33bdc815f";
+				PROVISIONING_PROFILE = "ad3a67f2-21aa-496f-9e8c-44fcc7168c9f";
 				SDKROOT = iphoneos8.1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1637,8 +1637,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nowon-gu (4DEC2S8P5N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nowon-gu (4DEC2S8P5N)";
+				CODE_SIGN_IDENTITY = "Apple Push Services: kr.nowon.m.minwon";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Push Services: kr.nowon.m.minwon";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1665,7 +1665,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6345e5b1-ddce-4ebb-95a5-6279b14d2a06";
+				PROVISIONING_PROFILE = "e10b7962-2edf-48a6-b49b-e3b95bbfc588";
 				SDKROOT = iphoneos8.1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1699,7 +1699,7 @@
 				OTHER_CFLAGS = "-DDEV_IPHONE";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6345e5b1-ddce-4ebb-95a5-6279b14d2a06";
+				PROVISIONING_PROFILE = "37d1b0f1-48b5-437f-a379-e6e5715b770f";
 				SDKROOT = iphoneos8.1;
 				WRAPPER_EXTENSION = app;
 			};

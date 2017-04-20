@@ -86,8 +86,8 @@
 
 - (void)playRingSound {
     
-    NSLog(@"playRingSound");//
-    //    NSLog(@"playRingSound %@",isPlaying?@"YES":@"NO");
+//    NSLog(@"playRingSound");//
+//        NSLog(@"playRingSound %@",isPlaying?@"YES":@"NO");
     //    if(isPlaying)
     //        return;
     //
@@ -110,7 +110,7 @@
 
 - (void)stopRingSound{
     
-    NSLog(@"stopRingSound");// %@",isPlaying?@"YES":@"NO");
+//    NSLog(@"stopRingSound");// %@",isPlaying?@"YES":@"NO");
     //    if(!isPlaying)
     //        return;
     //
@@ -127,7 +127,7 @@
 
 - (void)setAudioRoute:(BOOL)speaker
 {
-    NSLog(@"setAudioRoute %@",speaker?@"YES":@"NO");
+//    NSLog(@"setAudioRoute %@",speaker?@"YES":@"NO");
     
     
     //    	AudioSessionInitialize(NULL, NULL, NULL, NULL);
@@ -149,24 +149,24 @@
         
         success = [session setCategory:AVAudioSessionCategoryAmbient error:&error];
         if (!success) {
-            NSLog(@"%@ Error setting category: %@",
-                  NSStringFromSelector(_cmd), [error localizedDescription]);
+//            NSLog(@"%@ Error setting category: %@",
+//                  NSStringFromSelector(_cmd), [error localizedDescription]);
             
         }
         
         success = [session setActive:YES error:&error];
-        NSLog(@"success %@", success?@"YES":@"NO");
+//        NSLog(@"success %@", success?@"YES":@"NO");
         if (!success) {
-            NSLog(@"%@", [error localizedDescription]);
+//            NSLog(@"%@", [error localizedDescription]);
         }
         
     }
     else{
         NSError *deactivationError = nil;
         BOOL success = [[AVAudioSession sharedInstance] setActive:NO error:&deactivationError];
-        NSLog(@"success %@", success?@"YES":@"NO");
+//        NSLog(@"success %@", success?@"YES":@"NO");
         if (!success) {
-            NSLog(@"%@", [deactivationError localizedDescription]);
+//            NSLog(@"%@", [deactivationError localizedDescription]);
         }
         
     }
@@ -218,10 +218,10 @@
                                 nil];
     
     
-    NSLog(@"shared readplist session %@",[SharedAppDelegate readPlist:@"sessionkey"]);
-    NSLog(@"param %@",param);
+//    NSLog(@"shared readplist session %@",[SharedAppDelegate readPlist:@"sessionkey"]);
+//    NSLog(@"param %@",param);
     NSString *jsonString = [NSString stringWithFormat:@"param=%@",[param JSONString]];
-    NSLog(@"jsonString %@",jsonString);
+//    NSLog(@"jsonString %@",jsonString);
  
     
     NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/lemp/nowon/minwon_startup.lemp" parametersJson:jsonString];
@@ -243,9 +243,9 @@
         }
         else {
             
-            NSLog(@"server ver %@ app ver %@",resultDic[@"appver"],[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]);
+//            NSLog(@"server ver %@ app ver %@",resultDic[@"appver"],[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]);
             if ([resultDic[@"appver"] compare:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"] options:NSNumericSearch] == NSOrderedDescending) {
-                NSLog(@"updategogogogo");
+//                NSLog(@"updategogogogo");
                 UIAlertView *alert;
                 
 //                if ([resultDic[@"updatever"] compare:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"] options:NSNumericSearch] == NSOrderedDescending) {
@@ -260,7 +260,7 @@
                 [alert release];
                 //                return;
             } else {
-                NSLog(@"loghorizon");
+//                NSLog(@"loghorizon");
             }
             
 //            [SharedAppDelegate writeToPlist:@"menu" value:resultDic[@"menu"]];
@@ -271,14 +271,14 @@
                         NSString *lastDate = [NSString stringWithString:resultDic[@"lastsynctime"]];
             if([[SharedAppDelegate readPlist:@"lastupdate"] isEqualToString:@"0000-00-00 00:00:00"]){ // init contact
                 
-                NSLog(@"resultDic %@",resultDic);
+//                NSLog(@"resultDic %@",resultDic);
                 BOOL deptUpdateComplete = NO;
                 BOOL contactUpdateComplete = NO;
                 NSMutableArray *deptArray = resultDic[@"dept"];
                 
                 
                 if(deptArray != nil && [deptArray count]>0){
-                    NSLog(@"addDept 2nd");
+//                    NSLog(@"addDept 2nd");
                     [SQLiteDBManager removeDeptWithCode:@"0" all:YES];
                     deptUpdateComplete = [SQLiteDBManager addDept:deptArray];
                 } else {
@@ -291,7 +291,7 @@
                 
                 
                 if(contactArray != nil && [contactArray count]>0){
-                    NSLog(@"addContact 2nd");
+//                    NSLog(@"addContact 2nd");
                     [SQLiteDBManager removeContactWithUid:@"0" all:YES];
                     contactUpdateComplete = [SQLiteDBManager addContact:contactArray init:YES];
                     
@@ -301,7 +301,7 @@
                 }
                 [[ResourceLoader sharedInstance] settingContactList];
                 
-                NSLog(@"dept %@ contact %@",deptUpdateComplete?@"OK":@"NO",contactUpdateComplete?@"OK":@"NO");
+//                NSLog(@"dept %@ contact %@",deptUpdateComplete?@"OK":@"NO",contactUpdateComplete?@"OK":@"NO");
                 if (deptUpdateComplete && contactUpdateComplete) {
                     [SharedFunctions setLastUpdate:lastDate];
                 }
@@ -324,7 +324,7 @@
             
             }
             else{
-                NSLog(@"resultDic %@",resultDic);
+//                NSLog(@"resultDic %@",resultDic);
                 
                 [self.mainViewController setMenu:resultDic[@"menu"]];
                 [[ResourceLoader sharedInstance] settingMenuList:resultDic[@"menu"]];
@@ -361,7 +361,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        NSLog(@"FAIL : %@",operation.error);
+//        NSLog(@"FAIL : %@",operation.error);
         
         [CustomUIKit popupAlertViewOK:@"오류" msg:@"네트워크 접속이 원활하지 않습니다.\n요청한 동작이 수행되지 않을 수 있습니다.\n잠시 후 다시 시도해주세요."];
         
@@ -407,7 +407,7 @@
         
             if([self checkUpdate:listDic] == YES)
             {
-                NSLog(@" update data");
+//                NSLog(@" update data");
                 
                 [updateArray addObject:listDic];
             }
@@ -415,7 +415,7 @@
             else
             {
                 
-                NSLog(@" add data");
+//                NSLog(@" add data");
                 [addArray addObject:listDic];
             }
             
@@ -480,7 +480,7 @@
 
 - (BOOL)compareDept:(NSMutableArray *)list
 {
-    NSLog(@"list %@",list);
+//    NSLog(@"list %@",list);
     
     //    NSLog(@"reGetOrganizing",list);
     //    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
@@ -494,12 +494,12 @@
       
             if([self checkOrganizingUpdate:listDic] == YES)
             {
-                NSLog(@"update organize");
+//                NSLog(@"update organize");
                 [updateArray addObject:listDic];
             }
             else
             {
-                NSLog(@"add organize");
+//                NSLog(@"add organize");
                 [addArray addObject:listDic];
             }
             

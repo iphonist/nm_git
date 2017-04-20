@@ -32,14 +32,14 @@ const char alertNumber;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
+//    NSLog(@"viewWillAppear");
     
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"viewDidLoad");
+//    NSLog(@"viewDidLoad");
     
     
     self.view.backgroundColor = RGB(237, 240, 245);
@@ -330,7 +330,7 @@ const char alertNumber;
 }
 
 - (void)invite:(id)sender{
-    NSLog(@"invite");
+//    NSLog(@"invite");
     
 //    LocalContactViewController *localController = [[LocalContactViewController alloc] init];
 //    UINavigationController *nc = [[CBNavigationController alloc]initWithRootViewController:localController];
@@ -338,7 +338,7 @@ const char alertNumber;
 //    [localController release];
 //    [nc release];
     MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
-    NSLog(@"[MFMessageComposeViewController canSendText] %@",[MFMessageComposeViewController canSendText]?@"YES":@"NO");
+//    NSLog(@"[MFMessageComposeViewController canSendText] %@",[MFMessageComposeViewController canSendText]?@"YES":@"NO");
     if([MFMessageComposeViewController canSendText])
     {
         
@@ -355,15 +355,15 @@ const char alertNumber;
     switch (result) {
         case MessageComposeResultCancelled:
             [SVProgressHUD showErrorWithStatus:@"전송을 취소하였습니다."];
-            NSLog(@"Cancelled");
+//            NSLog(@"Cancelled");
             break;
         case MessageComposeResultFailed:
             [SVProgressHUD showErrorWithStatus:@"전송을 실패하였습니다."];
-            NSLog(@"Failed");
+//            NSLog(@"Failed");
             break;
         case MessageComposeResultSent:
             [SVProgressHUD showSuccessWithStatus:@"성공적으로 전송하였습니다."];
-            NSLog(@"Sent");
+//            NSLog(@"Sent");
             
             break;
         default:
@@ -374,7 +374,7 @@ const char alertNumber;
 }
 
 - (void)callNumber:(id)sender{
-    NSLog(@"callNumber");
+//    NSLog(@"callNumber");
     
     NSString *number = [[sender titleLabel]text];
         
@@ -402,7 +402,7 @@ const char alertNumber;
 }
 - (void)cmdButton:(id)sender{
     
-    NSLog(@"cmdButton %d",(int)[sender tag]);
+//    NSLog(@"cmdButton %d",(int)[sender tag]);
     NSArray *array = [ResourceLoader sharedInstance].menuList[[sender tag]-1][@"dept_info"];
     NSString *title = [ResourceLoader sharedInstance].menuList[[sender tag]-1][@"dept_cat"];
     [SharedAppDelegate.root.contact settingList:array withTitle:title];
@@ -415,7 +415,7 @@ const char alertNumber;
     // Dispose of any resources that can be recreated.
 }
 - (float)returnHeight{
-    NSLog(@"first Return height");
+//    NSLog(@"first Return height");
     return 30+100+21+29+100+21+29+58+21+30+66+21+10+105+22+10;
 }
 /*

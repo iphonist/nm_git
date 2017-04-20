@@ -76,7 +76,7 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
-    NSLog(@"userinfo %@",userInfo);
+//    NSLog(@"userinfo %@",userInfo);
     //handle the actions
     if ([identifier isEqualToString:@"declineAction"]){
     }
@@ -88,11 +88,11 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
 
     NSDictionary *aps = userInfo[@"aps"];
-    NSLog(@"userInfo alert %@",aps[@"alert"]);
-    NSLog(@"userInfo badge %@",aps[@"badge"]);
-    NSLog(@"userInfo idx %@",aps[@"idx"]);
-    NSLog(@"userInfo ptype %@",aps[@"ptype"]);
-    NSLog(@"userInfo sound %@",aps[@"sound"]);
+//    NSLog(@"userInfo alert %@",aps[@"alert"]);
+//    NSLog(@"userInfo badge %@",aps[@"badge"]);
+//    NSLog(@"userInfo idx %@",aps[@"idx"]);
+//    NSLog(@"userInfo ptype %@",aps[@"ptype"]);
+//    NSLog(@"userInfo sound %@",aps[@"sound"]);
     
     if([aps[@"ptype"]isEqualToString:@"n"]){
     if(application.applicationState == UIApplicationStateActive) {
@@ -115,7 +115,7 @@
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     
-	NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
+//	NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken");
     
     
     NSMutableString *deviceTokenString = [NSMutableString string];
@@ -124,14 +124,14 @@
     {
         [deviceTokenString appendFormat:@"%02x", ptr[i]];
     }
-    NSLog(@"deviceTokenString %@",deviceTokenString);
+//    NSLog(@"deviceTokenString %@",deviceTokenString);
     [SharedAppDelegate writeToPlist:@"devicetoken" value:deviceTokenString];
     
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError");
+//    NSLog(@"didFailToRegisterForRemoteNotificationsWithError");
     [SharedAppDelegate writeToPlist:@"devicetoken" value:@"dummydeviceid"];
 }
 // return push on off
@@ -178,7 +178,7 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-    NSLog(@"root.loginViewController %@",root.loginViewController);
+//    NSLog(@"root.loginViewController %@",root.loginViewController);
     if([[self readPlist:@"sessionkey"]length] > 0 && ![[SharedAppDelegate readPlist:@"lastupdate"]isEqualToString:@"0000-00-00 00:00:00"])
     {
        [root startup];
@@ -193,7 +193,7 @@
 
 - (void) initPlist {
 	
-    NSLog(@"initPlist");
+//    NSLog(@"initPlist");
     NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     if (![documentsDirectory hasSuffix:@"/"]) {
         documentsDirectory = [documentsDirectory stringByAppendingString:@"/"];
@@ -217,7 +217,7 @@
 
 - (void)writeToPlist:(NSString *)key value:(id)value
 {
-    NSLog(@"key %@ value %@",key,value);
+//    NSLog(@"key %@ value %@",key,value);
     
     if([value isKindOfClass:[NSNull class]] || value == nil)
         return;
@@ -248,7 +248,7 @@
     NSMutableDictionary *plistDict = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
     id result = plistDict[key];
     
-    NSLog(@"key %@ result %@",key,result);
+//    NSLog(@"key %@ result %@",key,result);
     //    NSLog(@"result %@",result);
     
     

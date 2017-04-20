@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad
 {
-	NSLog(@"CBViewDidLoaded");
+//	NSLog(@"CBViewDidLoaded");
 	
 	if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])
 	{
@@ -55,7 +55,7 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-	NSLog(@"CB PushViewController");
+//	NSLog(@"CB PushViewController");
 	if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])
 		self.interactivePopGestureRecognizer.enabled = NO;
 	
@@ -69,7 +69,7 @@
                     animated:(BOOL)animate
 {
 	// Enable the gesture again once the new controller is shown
-	NSLog(@"CB didShowViewController");
+//	NSLog(@"CB didShowViewController");
 	if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         // disable interactivePopGestureRecognizer in the rootViewController of navigationController
         if ([[navigationController.viewControllers firstObject] isEqual:viewController]) {

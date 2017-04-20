@@ -92,12 +92,12 @@
 
 - (void)configureForImageSize:(CGSize)imageSize 
 {
-    NSLog(@"size %@",NSStringFromCGSize(imageSize));
+//    NSLog(@"size %@",NSStringFromCGSize(imageSize));
 	CGSize boundsSize = [self bounds].size;
 	
 	CGFloat xScale = boundsSize.width / imageSize.width;
 	CGFloat yScale = boundsSize.height / imageSize.height;
-    NSLog(@"xcale %f yscale %f",xScale,yScale);
+//    NSLog(@"xcale %f yscale %f",xScale,yScale);
 
 	CGFloat minScale = MIN(xScale, yScale);
 //	CGFloat scrScale = 0.5; //1.0 / [[UIScreen mainScreen] scale];
@@ -123,11 +123,11 @@
 	else
 		maxScale = MAX(xScale, yScale) * 3.0;
     
-	NSLog(@"calc-maxScale %f",maxScale);
+//	NSLog(@"calc-maxScale %f",maxScale);
 	
     maxScale = MIN(maxScale, 2.2);
     
-    NSLog(@"RESULT minScale %f maxScale %f",minScale,maxScale);
+//    NSLog(@"RESULT minScale %f maxScale %f",minScale,maxScale);
     
 	self.contentSize = imageSize;
 	self.maximumZoomScale = maxScale;

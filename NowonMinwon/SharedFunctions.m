@@ -24,14 +24,14 @@
 }
 + (NSString *)calculateDate:(NSString *)date;{// with:(NSString *)now{
     NSDate *now2 = [NSDate date];
-    NSLog(@"date int %d",[date intValue]);
+//    NSLog(@"date int %d",[date intValue]);
     NSString *nowString = [NSString stringWithFormat:@"%.0f",[now2 timeIntervalSince1970]];
-    NSLog(@"nowString %@",nowString);
+//    NSLog(@"nowString %@",nowString);
     //    NSString *diffString = [NSString stringWithFormat:@"%.0f",[date timeIntervalSince1970]];
-    //    NSLog(@"diffsTring %@",diffString);
+//        NSLog(@"diffsTring %@",diffString);
     NSString *interval;
     int valueInterval = [nowString intValue] - [date intValue];
-    NSLog(@"valueInterval %d",valueInterval);
+//    NSLog(@"valueInterval %d",valueInterval);
     if(valueInterval < 0)
     {
         int intervalPerMinute = (-valueInterval)/60;

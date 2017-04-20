@@ -21,7 +21,7 @@ const char alertNumber;
 //@synthesize savedNum;
 
 - (void)closeAllCallView{
-    NSLog(@"closeAllCallView \n out %@ \n income %@ \n call %@",fullOutgoingView,fullIncomingView,fullCallingView);
+//    NSLog(@"closeAllCallView \n out %@ \n income %@ \n call %@",fullOutgoingView,fullIncomingView,fullCallingView);
     
 //    [SharedAppDelegate.root stopRingSound];
 //    if(outgoingView)
@@ -69,7 +69,7 @@ const char alertNumber;
 
 - (void)callAlert:(NSString *)number{
     
-    NSLog(@"number %@",number);
+//    NSLog(@"number %@",number);
     
     UIAlertView *alert;
     NSString *msg = [NSString stringWithFormat:@"%@로 일반 전화를 연결하시겠습니까?",number];
@@ -120,7 +120,7 @@ const char alertNumber;
 
 - (void)mvoipOutgoingWith:(NSString *)num{
     
-    NSLog(@"mvoipOutgoingWith %@",num);
+//    NSLog(@"mvoipOutgoingWith %@",num);
     
  
     NSString *myPhone = [SharedAppDelegate readPlist:@"phone_number"];
@@ -137,22 +137,22 @@ const char alertNumber;
     [VoIPSingleton sharedVoIP].szUserPhone = myPhone;// userPhone;
     [VoIPSingleton sharedVoIP].szUserPwd = userPassword;
     
-    NSLog(@"myphone %@ peerphone %@ userpassword %@",myPhone,peerPhone, userPassword);
+//    NSLog(@"myphone %@ peerphone %@ userpassword %@",myPhone,peerPhone, userPassword);
     
     [cancel setEnabled:YES];
     
-    NSLog(@"1");
+//    NSLog(@"1");
 	[VoIPSingleton sharedVoIP].call_target = self;
     
-    NSLog(@"IP:%@ domain:%@",[SharedAppDelegate readPlist:@"voip"],[SharedAppDelegate readPlist:@"sip_domain"]);
+//    NSLog(@"IP:%@ domain:%@",[SharedAppDelegate readPlist:@"voip"],[SharedAppDelegate readPlist:@"sip_domain"]);
     
-    NSLog(@"2");
+//    NSLog(@"2");
 	if ([[VoIPSingleton sharedVoIP] callStatus] == CALL_WAIT)
     {
-        NSLog(@"3");
+//        NSLog(@"3");
 		if ([[VoIPSingleton sharedVoIP] callStart:DCODEC_ALAW] == NO)
         {
-            NSLog(@"4");
+//            NSLog(@"4");
 			return;
 		}
 	}
@@ -166,19 +166,19 @@ const char alertNumber;
 	if (status_type == DEVENT_DIALING)
 	{
 		// do nothing
-		NSLog(@"DEVENT_DIALING\n");
+//		NSLog(@"DEVENT_DIALING\n");
 		[self playDialingSound];
 	}
 	else if (status_type == DEVENT_RINGING)
 	{
 		//TODO play Ringback Tone....
-		NSLog(@"DEVENT_RINGING\n");
+//		NSLog(@"DEVENT_RINGING\n");
 		[answer setEnabled:YES]; 
 	}
 	else if (status_type == DEVENT_CALL)
 	{
 		// do nothing
-		NSLog(@"DEVENT_CALL\n");
+//		NSLog(@"DEVENT_CALL\n");
 		[self stopDialingSound];
         [SharedAppDelegate.window addSubview:[self setFullCalling]];
         //		[self showCalling];
@@ -187,11 +187,11 @@ const char alertNumber;
 	else if (status_type == DEVENT_HOLD)
 	{
 		// do nothing
-		NSLog(@"DEVENT_HOLD\n");
+//		NSLog(@"DEVENT_HOLD\n");
 	}
 	else if (status_type == DEVENT_HANGUP)
 	{
-		NSLog(@"DEVENT_HANGUP\n");
+//		NSLog(@"DEVENT_HANGUP\n");
 		[self stopDialingSound];
         [self closeAllCallView];
 
@@ -199,7 +199,7 @@ const char alertNumber;
         
 		[[VoIPSingleton sharedVoIP] callDestroy];
 		
-		NSLog(@"fromName %@ toName %@",self.fromName,self.toName);
+//		NSLog(@"fromName %@ toName %@",self.fromName,self.toName);
         NSString *szByte = @"";//[[NSString alloc]init];
         
         if(status_code == DHANGUP_BUSY)
@@ -237,8 +237,8 @@ const char alertNumber;
         else if(status_code == DHANGUP_MPDND)
             szByte = [NSString stringWithFormat:@"상대방이 수신거부를 설정해놓았습니다. (%d)",(int)status_code];
         
-        NSLog(@"status_code %d",(int)status_code);
-        NSLog(@"szByte %@",szByte);
+//        NSLog(@"status_code %d",(int)status_code);
+//        NSLog(@"szByte %@",szByte);
         
         if(szByte != nil && [szByte length]>0)
         {
@@ -274,7 +274,7 @@ const char alertNumber;
 
 
 - (void)cancelFullOutgoing{
-    NSLog(@"cancelFullOutgoing");
+//    NSLog(@"cancelFullOutgoing");
 
     fullOutgoingView.hidden = YES;
     
@@ -298,7 +298,7 @@ const char alertNumber;
 - (UIView *)setFullOutgoing:(NSString *)number
 {
     
-    NSLog(@"SetFulloutgoing %@",number);
+//    NSLog(@"SetFulloutgoing %@",number);
     if(fullOutgoingView)
         return nil;
     
@@ -484,7 +484,7 @@ const char alertNumber;
         label.text = self.toName;
     if([self.fromName length]>0)
         label.text = self.fromName;
-    NSLog(@"label.text %@",label.text);
+//    NSLog(@"label.text %@",label.text);
 //    [label release];
     
     
@@ -544,7 +544,7 @@ const char alertNumber;
     [self performSelectorOnMainThread:@selector(changeImage:) withObject:sender waitUntilDone:NO];
     
     bSpeakerOn = !bSpeakerOn;
-    NSLog(@"bspeakeron %@",bSpeakerOn?@"YES":@"NO");
+//    NSLog(@"bspeakeron %@",bSpeakerOn?@"YES":@"NO");
     [[VoIPSingleton sharedVoIP] callSpeaker:bSpeakerOn];
 }
 
@@ -552,7 +552,7 @@ const char alertNumber;
     [self performSelectorOnMainThread:@selector(changeLargeImage:) withObject:sender waitUntilDone:NO];
     
     bSpeakerOn = !bSpeakerOn;
-    NSLog(@"bspeakeron %@",bSpeakerOn?@"YES":@"NO");
+//    NSLog(@"bspeakeron %@",bSpeakerOn?@"YES":@"NO");
     [[VoIPSingleton sharedVoIP] callSpeaker:bSpeakerOn];
 }
 
@@ -628,7 +628,7 @@ const char alertNumber;
 
 
 - (void)cancelFullCalling{
-    NSLog(@"cancelFullCalling");
+//    NSLog(@"cancelFullCalling");
 
 //    if(talkingTime){
 //        [talkingTime release];

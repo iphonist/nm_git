@@ -22,7 +22,7 @@
         self.view.backgroundColor = RGB(237, 240, 245);//[UIColor whiteColor];
         self.title = @"노원구 행정전화번호부";
         
-        NSLog(@"init");
+//        NSLog(@"init");
     }
     return self;
 }
@@ -33,7 +33,7 @@
 
     
     BOOL isInstalled = [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"NowonMobile://"]];
-    NSLog(@"isInstalled %@",isInstalled?@"YES":@"NO");
+//    NSLog(@"isInstalled %@",isInstalled?@"YES":@"NO");
     if(isInstalled){
         
 //        [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"NowonMobile://"]];
@@ -57,7 +57,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 
-    NSLog(@"viewDidLoad");
+//    NSLog(@"viewDidLoad");
 //    NSLog(@"viewDidLoad %@ %@",self.navigationController,self.navigationController.navigationBar);
     
     UIButton *button;
@@ -127,7 +127,7 @@
                                      segmentedImage.frame.origin.y + segmentedImage.frame.size.height + 10,
                                      scrollView.frame.size.width, [first returnHeight]);
     segmentedView.userInteractionEnabled = YES;
-    NSLog(@"NSStringFrom %@",NSStringFromCGRect(segmentedView.frame));
+//    NSLog(@"NSStringFrom %@",NSStringFromCGRect(segmentedView.frame));
     
     [scrollView addSubview:segmentedView];
     
@@ -139,7 +139,7 @@
     
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, segmentedView.frame.origin.y + segmentedView.frame.size.height);
 
-    NSLog(@"first.view %@",first.view);
+//    NSLog(@"first.view %@",first.view);
 }
 
 - (void)setMenu:(NSArray *)array{
@@ -150,7 +150,7 @@
 - (void)showNotice:(NSDictionary *)dic{
     UIView *view = [[[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width,64)]autorelease];
     view.backgroundColor = [UIColor blackColor];
-    NSLog(@"dic %@",dic);
+//    NSLog(@"dic %@",dic);
     [SharedAppDelegate.window addSubview:view];
     
     UIButton *button;
@@ -158,7 +158,7 @@
     [view addSubview:button];
 }
 - (void)setNotice:(NSArray *)array{
-    NSLog(@"setNotice %@",array);
+//    NSLog(@"setNotice %@",array);
 //    if(noticeArray){
 //        [noticeArray release];
 //        noticeArray = nil;
@@ -217,7 +217,7 @@
 //    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
 //    NSLog(@"which? %d",segmentedControl.selectedSegmentIndex);
     
-    NSLog(@"FIRST %@ second %@",first,second);
+//    NSLog(@"FIRST %@ second %@",first,second);
     if([sender tag] == 1){
         first.view.hidden = NO;
         first.view.userInteractionEnabled = YES;
@@ -238,11 +238,11 @@
         segmentedImage.image = [CustomUIKit customImageNamed:@"button_main_segmented_right_selected.png"];
         
     }
-    NSLog(@"segmentedview %@",NSStringFromCGRect(segmentedView.frame));
+//    NSLog(@"segmentedview %@",NSStringFromCGRect(segmentedView.frame));
 //    second.view.backgroundColor = [UIColor blackColor];
     
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, segmentedView.frame.origin.y + segmentedView.frame.size.height);
-    NSLog(@"scrollView.contentSize %@",NSStringFromCGSize(scrollView.contentSize));
+//    NSLog(@"scrollView.contentSize %@",NSStringFromCGSize(scrollView.contentSize));
     
 }
 

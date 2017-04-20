@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"viewdidLoad");
+//    NSLog(@"viewdidLoad");
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -72,7 +72,7 @@
     
         myTable.frame = CGRectMake(0, 0, 320, [self returnHeight]-viewY);
     myTable.backgroundColor = [UIColor grayColor];
-    NSLog(@"mytable frame %@",NSStringFromCGRect(myTable.frame));
+//    NSLog(@"mytable frame %@",NSStringFromCGRect(myTable.frame));
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +144,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelect");
+//    NSLog(@"didSelect");
     NSString *listName = [[ResourceLoader sharedInstance] searchCode:myList[indexPath.row][@"deptcode"]];
     [SharedAppDelegate.root.organize.selectCodeList removeAllObjects];
     [SharedAppDelegate.root.organize.selectCodeList addObject:myList[indexPath.row]];

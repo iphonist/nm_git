@@ -449,24 +449,24 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {}
         if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"]){// || [method isEqualToString:@"DELETE"]) {
             url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
             [request setURL:url];
-            NSLog(@"if");
+//            NSLog(@"if");
         } else {
             NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.stringEncoding));
             switch (self.parameterEncoding) {
                 case AFFormURLParameterEncoding:;
                     [request setValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
                     [request setHTTPBody:[AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding) dataUsingEncoding:NSUTF8StringEncoding]];
-                    NSLog(@"request1 %@",request);
+//                    NSLog(@"request1 %@",request);
                     break;
                 case AFJSONParameterEncoding:;
                     [request setValue:[NSString stringWithFormat:@"application/json; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
                     [request setHTTPBody:[AFJSONStringFromParameters(parameters) dataUsingEncoding:self.stringEncoding]];
-                    NSLog(@"request2 %@",request);
+//                    NSLog(@"request2 %@",request);
                     break;
                 case AFPropertyListParameterEncoding:;
                     [request setValue:[NSString stringWithFormat:@"application/x-plist; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
                     [request setHTTPBody:[AFPropertyListStringFromParameters(parameters) dataUsingEncoding:self.stringEncoding]];
-                    NSLog(@"request3 %@",request);
+//                    NSLog(@"request3 %@",request);
                     break;
             }
         }
@@ -498,14 +498,14 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {}
         if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"]){// || [method isEqualToString:@"DELETE"]) {
 //            url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
             //            [request setURL:url];
-            NSLog(@"if");
+//            NSLog(@"if");
         } else {
             NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.stringEncoding));
           
             [request setValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:[parameters dataUsingEncoding:NSUTF8StringEncoding]];
 
-                    NSLog(@"request1 %@",request);
+//                    NSLog(@"request1 %@",request);
             
         }
     }
@@ -535,11 +535,11 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {}
         if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"]){// || [method isEqualToString:@"DELETE"]) {
             url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
             [request setURL:url];
-            NSLog(@"if");
+//            NSLog(@"if");
         } else {
             NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(self.stringEncoding));
 			[request setValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
-            NSLog(@"request1 %@",request);
+//            NSLog(@"request1 %@",request);
 			
 			NSString *normalParam = AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding);
 			NSString *sumParam = @"";
@@ -935,7 +935,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     self.stringEncoding = encoding;
     self.bodyStream = [[AFMultipartBodyStream alloc] initWithStringEncoding:encoding];
     
-    NSLog(@"self.request %@ \n body %@",self.request, self.bodyStream);
+//    NSLog(@"self.request %@ \n body %@",self.request, self.bodyStream);
     return self;
 }
 
@@ -1027,7 +1027,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
 - (NSMutableURLRequest *)requestByFinalizingMultipartFormData {
     if ([self.bodyStream isEmpty]) {
-        NSLog(@"body is empty");
+//        NSLog(@"body is empty");
         return self.request;
     }
     
@@ -1037,7 +1037,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", kAFMultipartFormBoundary] forHTTPHeaderField:@"Content-Type"];
     [self.request setValue:[NSString stringWithFormat:@"%llu", [self.bodyStream contentLength]] forHTTPHeaderField:@"Content-Length"];
     [self.request setHTTPBodyStream:self.bodyStream];
-    NSLog(@"self.request %@",self.request);
+//    NSLog(@"self.request %@",self.request);
     return self.request;
 }
 

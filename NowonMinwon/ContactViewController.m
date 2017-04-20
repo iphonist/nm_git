@@ -27,7 +27,7 @@ const char alertNumber;
 }
 - (void)backTo
 {
-    NSLog(@"backTo");
+//    NSLog(@"backTo");
     [self.navigationController popViewControllerWithBlockGestureAnimated:YES];
 }
 
@@ -88,7 +88,7 @@ const char alertNumber;
 - (void)settingList:(NSArray *)array withTitle:(NSString *)title{
     self.title = title;
     
-    NSLog(@"array %@",array);
+//    NSLog(@"array %@",array);
     if(myList){
         [myList release];
         myList = nil;
@@ -250,7 +250,7 @@ const char alertNumber;
     
     
     backgroundImage.frame = CGRectMake(7, 7, 305, 10 + size.height + 3 + 15 + 12 + 15 + 15);
-    NSLog(@"backgroundImage %@",NSStringFromCGRect(backgroundImage.frame));
+//    NSLog(@"backgroundImage %@",NSStringFromCGRect(backgroundImage.frame));
     
     return cell;
 }
@@ -265,7 +265,7 @@ const char alertNumber;
 - (void)cmdButton:(id)sender{
     
     NSString *phonenumber = [[sender titleLabel]text];
-    NSLog(@"phonenumber %@",phonenumber);
+//    NSLog(@"phonenumber %@",phonenumber);
     
     if([sender tag] == kCall){
         

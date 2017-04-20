@@ -157,7 +157,7 @@
 
 + (UIButton *)backButtonWithTitle:(NSString *)num target:(id)target selector:(SEL)selector{
 
-    NSLog(@"setBackButton %@",num);
+//    NSLog(@"setBackButton %@",num);
     
     NSString *back;
     
@@ -165,7 +165,7 @@
     back = @"";
     
     CGSize size = [back sizeWithFont:[UIFont boldSystemFontOfSize:15] constrainedToSize:CGSizeMake(100, 20) lineBreakMode:UILineBreakModeWordWrap];
-    NSLog(@"size.width %f",size.width);
+//    NSLog(@"size.width %f",size.width);
     
     UIImageView *backImageView = [[[UIImageView alloc]init]autorelease];
     backImageView.frame = CGRectMake(0, 0, 11, 18);

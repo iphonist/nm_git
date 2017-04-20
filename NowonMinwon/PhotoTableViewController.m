@@ -22,13 +22,13 @@
     self = [super init];//WithStyle:style];
     if (self) {
    
-        NSLog(@"initForDownload");
+//        NSLog(@"initForDownload");
         
  
     
         
         parentVC = parent;
-        NSLog(@"myDic %@",dic);
+//        NSLog(@"myDic %@",dic);
         myDic = [[NSDictionary alloc]initWithDictionary:dic];
         self.title = @"사진 보기";
 //        [SharedAppDelegate.root returnTitle:self.title viewcon:self noti:NO alarm:NO];
@@ -58,7 +58,7 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
-    NSLog(@"self.view.frame size.heigh %f",self.view.bounds.size.height+20+44);
+//    NSLog(@"self.view.frame size.heigh %f",self.view.bounds.size.height+20+44);
     [self.view addSubview:scrollView];
     [scrollView release];
     
@@ -100,8 +100,8 @@
        
         myList = [[NSMutableArray alloc]initWithArray:myDic[@"filename"]];
     
-        NSLog(@"myDic %@",myDic);
-        NSLog(@"mylist %@",myList);
+//        NSLog(@"myDic %@",myDic);
+//        NSLog(@"mylist %@",myList);
         
         
         int page = [myList count];
@@ -110,14 +110,14 @@
         paging.numberOfPages = page;
         
         paging.currentPage = pIndex;
-        NSLog(@"paging.current %d",(int)paging.currentPage);
+//        NSLog(@"paging.current %d",(int)paging.currentPage);
         pageLabel.text = [NSString stringWithFormat:@"%d/%d",(int)paging.currentPage+1,(int)paging.numberOfPages];
 		
 		[self adjustPageLabelSize];
 
 		
         scrollView.contentOffset = CGPointMake(320*pIndex, scrollView.contentOffset.y);
-        NSLog(@"scrollView.contentoffset.x %f",scrollView.contentOffset.x);
+//        NSLog(@"scrollView.contentoffset.x %f",scrollView.contentOffset.x);
         
         imageViewArray = [[NSMutableArray alloc]init];
         
@@ -174,7 +174,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
+//    NSLog(@"viewWillAppear");
     
     
 	
@@ -220,7 +220,7 @@
 - (void)downloadImage:(int)index{
     
     MRScrollView *view = imageViewArray[index];
-    NSLog(@"inscrollview %@",NSStringFromCGRect(view.frame));
+//    NSLog(@"inscrollview %@",NSStringFromCGRect(view.frame));
     if(downloadProgress){
         [downloadProgress removeFromSuperview];
         [downloadProgress release];
@@ -244,7 +244,7 @@
     
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
      {
-         NSLog(@"progress %f",(float)totalBytesRead / totalBytesExpectedToRead);
+//         NSLog(@"progress %f",(float)totalBytesRead / totalBytesExpectedToRead);
          [downloadProgress setProgress:(float)totalBytesRead / totalBytesExpectedToRead];
          
      }];
@@ -268,7 +268,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        NSLog(@"failed %@",error);
+//        NSLog(@"failed %@",error);
 		[HTTPExceptionHandler handlingByError:error];
 
     }];
@@ -294,7 +294,7 @@
 
 - (void)handleGesture:(UIGestureRecognizer*)gesture {
     
-    NSLog(@"handleGesture %@",NSStringFromCGRect(scrollView.frame));
+//    NSLog(@"handleGesture %@",NSStringFromCGRect(scrollView.frame));
     
                          [[UIApplication sharedApplication] setStatusBarHidden:![[UIApplication sharedApplication] isStatusBarHidden] withAnimation:UIStatusBarAnimationNone];
                          [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:NO];
@@ -344,7 +344,7 @@
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollViewDidEndDecelerating");
+//    NSLog(@"scrollViewDidEndDecelerating");
 
     
  [self downloadImage:(int)paging.currentPage];

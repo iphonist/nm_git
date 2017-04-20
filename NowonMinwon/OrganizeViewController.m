@@ -79,7 +79,7 @@ const char alertNumber;
     //    [self.view addSubview:groupNameView];
     //    [groupNameView release];
     
-    NSLog(@"tabbar %f",self.tabBarController.tabBar.frame.size.height);
+//    NSLog(@"tabbar %f",self.tabBarController.tabBar.frame.size.height);
     myTable = [[UITableView alloc]init];//WithFrame:CGRectMake(0, 28+search.frame.size.height, 320, self.view.frame.size.height-search.frame.size.height-groupNameView.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStylePlain];
     myTable.delegate = self;
     myTable.dataSource = self;
@@ -115,9 +115,9 @@ const char alertNumber;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"OrganizeView willAppear %f",self.tabBarController.tabBar.frame.size.height);
-    NSLog(@"addArray %@",self.addArray);
-    NSLog(@"TAGINFO %d",tagInfo);
+//    NSLog(@"OrganizeView willAppear %f",self.tabBarController.tabBar.frame.size.height);
+//    NSLog(@"addArray %@",self.addArray);
+//    NSLog(@"TAGINFO %d",tagInfo);
     
     
     [self reloadCheck];
@@ -133,20 +133,20 @@ const char alertNumber;
  */
 
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"OrganizeView viewWillDisappear");
+//    NSLog(@"OrganizeView viewWillDisappear");
     [super viewWillDisappear:animated];
 }
 
 
 - (void)viewDidDisappear:(BOOL)animated {
-    NSLog(@"OrganizeView viewDidDisappear");
+//    NSLog(@"OrganizeView viewDidDisappear");
     [super viewDidDisappear:animated];
 }
 
 
 - (void)checkSameLevel:(NSString *)code
 {
-    NSLog(@"checkSamelevel %@",code);
+//    NSLog(@"checkSamelevel %@",code);
 	//			id AppID = [[UIApplication sharedApplication]delegate];
     
     expanded = NO;
@@ -156,8 +156,8 @@ const char alertNumber;
 	
 	NSMutableArray *tempArray = [[NSMutableArray alloc]init];
 	[tempArray setArray:[ResourceLoader sharedInstance].deptList];
-    NSLog(@"tempArray %@",tempArray);
-    NSLog(@"tempArray %d",(int)[tempArray count]);
+//    NSLog(@"tempArray %@",tempArray);
+//    NSLog(@"tempArray %d",(int)[tempArray count]);
 	for(NSDictionary *forDic in tempArray)//int i = 0; i < [tempArray count]; i++)
 	{
         
@@ -167,7 +167,7 @@ const char alertNumber;
 			[subDeptList addObject:forDic];
 		}
 	}
-    NSLog(@"subDeptList %@",subDeptList);
+//    NSLog(@"subDeptList %@",subDeptList);
     
 	for(NSDictionary *forDic in tempArray)//int i = 0; i < [tempArray count]; i++)
 	{
@@ -188,10 +188,10 @@ const char alertNumber;
 		}
 	}
     
-    NSLog(@"subpeoplelist %@",subPeopleList);
+//    NSLog(@"subpeoplelist %@",subPeopleList);
     
     existDept = [self existDeptNumber:code];
-    NSLog(@"existDept %@",existDept?@"YES":@"NO");
+//    NSLog(@"existDept %@",existDept?@"YES":@"NO");
     
     if(existDept){
             expanded = YES;
@@ -209,7 +209,7 @@ const char alertNumber;
 //    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"<" style:UIBarButtonItemStylePlain target:self action:@selector(backTo)];
 //    self.navigationItem.backBarButtonItem = backButton;
 //    [backButton release];
-    NSLog(@"setFirstButton");
+//    NSLog(@"setFirstButton");
     UIButton *button = [CustomUIKit backButtonWithTitle:nil target:self selector:@selector(backTo)];
     UIBarButtonItem *btnNavi = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = btnNavi;
@@ -327,7 +327,7 @@ const char alertNumber;
 
 - (void)backTo
 {
-    NSLog(@"backTo");
+//    NSLog(@"backTo");
     /****************************************************************
      작업자 : 김혜민
      작업일자 : 2012/06/04
@@ -359,41 +359,41 @@ const char alertNumber;
 //        [pView release];
 //    }
     
-    NSLog(@"taginfo %d",tagInfo);
+//    NSLog(@"taginfo %d",tagInfo);
 
 		if(tagInfo == 0)
 		{
-            NSLog(@"0");
+//            NSLog(@"0");
 //				[CustomUIKit popupAlertViewOK:nil msg:@"최상위 그룹입니다."];
 								return;
 
 		}
     else if(tagInfo == 1)
     {
-        NSLog(@"1");
+//        NSLog(@"1");
         [self setFirstButton];
-        NSLog(@"2");
+//        NSLog(@"2");
         [self setFirst:firstDept];
-        NSLog(@"3");
+//        NSLog(@"3");
     }
-    NSLog(@"4");
+//    NSLog(@"4");
     myTable.contentOffset = CGPointMake(0, 0);
 		
 		[self checkSameLevel:self.selectCodeList[[self.selectCodeList count]-1]];
     
-    NSLog(@"5");
+//    NSLog(@"5");
 		
 		
 		
 		
     tagInfo --;
-    NSLog(@"6");
+//    NSLog(@"6");
     [self.selectCodeList removeLastObject];
-    NSLog(@"7");
+//    NSLog(@"7");
     [self.addArray removeLastObject];
-    NSLog(@"8");
+//    NSLog(@"8");
     [self reloadCheck];
-    NSLog(@"9");
+//    NSLog(@"9");
 }
 
 
@@ -443,7 +443,7 @@ const char alertNumber;
 //		{   	
 //            int temp3 = [subPeopleList count] + [deptList count];
     
-    NSLog(@"numberof");
+//    NSLog(@"numberof");
     int subPeopleListCount = (int)[subPeopleList count];
     
     if(existDept)
@@ -461,7 +461,7 @@ const char alertNumber;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"heightForRowAtIndexPath");
+//    NSLog(@"heightForRowAtIndexPath");
     int subPeopleListCount = (int)[subPeopleList count];
     
     if(existDept)
@@ -534,7 +534,7 @@ const char alertNumber;
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"cellForRowAtIndexPath");
+//    NSLog(@"cellForRowAtIndexPath");
     static NSString *CellIdentifier = @"Cell";
 //		NSString *email;
     UILabel *name, *info, *officephone;
@@ -623,7 +623,7 @@ const char alertNumber;
         ++subPeopleListCount;
     
 
-    NSLog(@"subPeopleListCount %d",subPeopleListCount);
+//    NSLog(@"subPeopleListCount %d",subPeopleListCount);
         if(indexPath.row < subPeopleListCount)
         {
             arrow.frame = CGRectMake(320-22, 20, 13, 8);
@@ -783,9 +783,9 @@ const char alertNumber;
 
 - (BOOL)existDeptNumber:(NSString *)code{
 
-    NSLog(@"existDeptNumber %@",code);
+//    NSLog(@"existDeptNumber %@",code);
     BOOL returnExistValue = NO;
-    NSLog(@"existDeptDictionary %@",existDeptDictionary);
+//    NSLog(@"existDeptDictionary %@",existDeptDictionary);
     if(existDeptDictionary){
         existDeptDictionary = nil;
     }
@@ -794,14 +794,14 @@ const char alertNumber;
     
     for(NSDictionary *dic in [ResourceLoader sharedInstance].deptList){
         if([dic[@"deptcode"]isEqualToString:code]){
-            NSLog(@"dic %@",dic);
+//            NSLog(@"dic %@",dic);
             if([dic[@"dept_phone"]length]>0){
             existDeptDictionary = dic;
                 returnExistValue = YES;
         }
         }
     }
-    NSLog(@"existDeptDictionary %@",existDeptDictionary);
+//    NSLog(@"existDeptDictionary %@",existDeptDictionary);
     
     return returnExistValue;
 }
@@ -813,7 +813,7 @@ const char alertNumber;
     for(NSDictionary *dic in [ResourceLoader sharedInstance].deptList){
         if([dic[@"deptcode"]isEqualToString:code]){
             if([dic[@"dept_phone"]length]>0){
-                NSLog(@"exist");
+//                NSLog(@"exist");
                 returnString = dic[@"dept_phone"];
             }
         }
@@ -824,7 +824,7 @@ const char alertNumber;
 
 - (void)cmdButton:(id)sender{
     NSString *phonenumber = [[sender titleLabel]text];
-    NSLog(@"phonenumber %@",phonenumber);
+//    NSLog(@"phonenumber %@",phonenumber);
     
     
     if([sender tag] == kCall){
@@ -877,7 +877,7 @@ const char alertNumber;
 - (void)selectList:(int)rowOfButton
 {
     
-    NSLog(@"selectList");
+//    NSLog(@"selectList");
     /****************************************************************
      작업자 : 김혜민
      작업일자 : 2012/06/04
@@ -997,14 +997,14 @@ const char alertNumber;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     int subPeopleListCount = [subPeopleList count];
-    NSLog(@"existDept %@",existDept?@"YES":@"NO");
+//    NSLog(@"existDept %@",existDept?@"YES":@"NO");
     if(existDept)
         ++subPeopleListCount;
     
     if(indexPath.row < subPeopleListCount)
     {
         if(self.selectedRowIndex.row == indexPath.row && expanded){
-        NSLog(@"here");
+//        NSLog(@"here");
         self.selectedRowIndex = nil;
         expanded = NO;
         
@@ -1012,7 +1012,7 @@ const char alertNumber;
         
     }
     else{
-        NSLog(@"here expand");
+//        NSLog(@"here expand");
         self.selectedRowIndex = indexPath;
         expanded = YES;
     }
@@ -1025,7 +1025,7 @@ const char alertNumber;
         
         
         int subRow = indexPath.row - subPeopleListCount;
-        NSLog(@"subRow %d",subRow);
+//        NSLog(@"subRow %d",subRow);
         [self selectList:subRow];
     }
     
@@ -1039,7 +1039,7 @@ const char alertNumber;
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {
-    NSLog(@"didReceiveMemoryWarning");
+//    NSLog(@"didReceiveMemoryWarning");
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     

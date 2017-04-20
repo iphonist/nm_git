@@ -146,7 +146,7 @@
     
     
     NSString *jsonString = [NSString stringWithFormat:@"param=%@",[param JSONString]];
-    NSLog(@"jsonString %@",jsonString);
+//    NSLog(@"jsonString %@",jsonString);
     
     
     NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/lemp/nowon/minwon_register.lemp" parametersJson:jsonString];
@@ -156,7 +156,7 @@
     AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSDictionary *resultDic = [operation.responseString objectFromJSONString][0];
-        NSLog(@"resultDic %@",resultDic);
+//        NSLog(@"resultDic %@",resultDic);
         NSString *isSuccess = resultDic[@"result"];
         if ([isSuccess isEqualToString:@"0"]) {
             
@@ -176,13 +176,13 @@
         else {
             NSString *msg = [NSString stringWithFormat:@"%@",resultDic[@"resultMessage"]];
             [CustomUIKit popupAlertViewOK:nil msg:msg];
-            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
+//            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
             
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        NSLog(@"FAIL : %@",operation.error);
+//        NSLog(@"FAIL : %@",operation.error);
         [HTTPExceptionHandler handlingByError:error];
         
     }];
@@ -196,7 +196,7 @@
 
 - (void)inputVaricode{
     
-    NSLog(@"inputVariCode");
+//    NSLog(@"inputVariCode");
     
     if(transView){
         [transView removeFromSuperview];
@@ -261,22 +261,22 @@
     timerLabel.numberOfLines = 1;
     [requestButton addSubview:timerLabel];
     
-    NSLog(@"minuteTimer %@",minuteTimer);
+//    NSLog(@"minuteTimer %@",minuteTimer);
     
     if (minuteTimer && [minuteTimer isValid]) {
-        NSLog(@"1");
+//        NSLog(@"1");
         [minuteTimer invalidate];
         minuteTimer = nil;
     }
     
-    NSLog(@"2");
+//    NSLog(@"2");
     
     minuteTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                    target:self
                                                  selector:@selector(callTimer:)
                                                  userInfo:nil
                                                   repeats:YES];
-    NSLog(@"3");
+//    NSLog(@"3");
     
     
     gap = 15;
@@ -300,13 +300,13 @@
 //    [okButton addSubview:label];
     
     
-    NSLog(@"4");
+//    NSLog(@"4");
     
     
 }
 
 - (void)callTimer:(NSTimer *)_timer{
-    NSLog(@"timer on");
+//    NSLog(@"timer on");
     
     --sec;
     timerLabel.text = [NSString stringWithFormat:@"00:%02d",sec];
@@ -324,12 +324,12 @@
     }
 }
 - (void)checkVaricode:(id)sender{
-    NSLog(@"checkvaricode");
+//    NSLog(@"checkvaricode");
     // connection
 
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://nowon.lemp.co.kr"]]];//[NSString stringWithFormat:@"https://%@",[SharedAppDelegate readPlist:@"was"]]]];
     
-    NSLog(@"client %@",client);
+//    NSLog(@"client %@",client);
     
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                            _textField.text,@"cellphone",
@@ -337,9 +337,9 @@
                            nil];
     
     
-    NSLog(@"param %@",param);
+//    NSLog(@"param %@",param);
     NSString *jsonString = [NSString stringWithFormat:@"param=%@",[param JSONString]];
-    NSLog(@"jsonString %@",jsonString);
+//    NSLog(@"jsonString %@",jsonString);
     
     
     NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/lemp/nowon/minwon_certificate.lemp" parametersJson:jsonString];
@@ -349,7 +349,7 @@
     AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSDictionary *resultDic = [operation.responseString objectFromJSONString][0];
-        NSLog(@"resultDic %@",resultDic);
+//        NSLog(@"resultDic %@",resultDic);
         NSString *isSuccess = resultDic[@"result"];
         if ([isSuccess isEqualToString:@"0"]) {
             if (minuteTimer && [minuteTimer isValid]) {
@@ -363,7 +363,7 @@
         else {
             NSString *msg = [NSString stringWithFormat:@"%@",resultDic[@"resultMessage"]];
             [CustomUIKit popupAlertViewOK:nil msg:msg];
-            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
+//            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
             _variCodeTextField.text = nil;
         }
         
@@ -425,10 +425,10 @@
                            [[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"],@"appver",
                            nil];
     
-    NSLog(@"param %@",param);
+//    NSLog(@"param %@",param);
     
     NSString *jsonString = [NSString stringWithFormat:@"param=%@",[param JSONString]];
-    NSLog(@"jsonString %@",jsonString);
+//    NSLog(@"jsonString %@",jsonString);
     
     
     NSMutableURLRequest *request = [client requestWithMethod:@"POST" path:@"/lemp/nowon/minwon_install.lemp" parametersJson:jsonString];
@@ -438,7 +438,7 @@
     AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSDictionary *resultDic = [operation.responseString objectFromJSONString][0];
-        NSLog(@"resultDic %@",resultDic);
+//        NSLog(@"resultDic %@",resultDic);
         NSString *isSuccess = resultDic[@"result"];
         if ([isSuccess isEqualToString:@"0"]) {
             
@@ -450,14 +450,14 @@
         else {
             NSString *msg = [NSString stringWithFormat:@"%@",resultDic[@"resultMessage"]];
             [CustomUIKit popupAlertViewOK:nil msg:msg];
-            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
+//            NSLog(@"isSuccess NOT 0, BUT %@",isSuccess);
          
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         
-        NSLog(@"FAIL : %@",operation.error);
+//        NSLog(@"FAIL : %@",operation.error);
         [HTTPExceptionHandler handlingByError:error];
     }];
     

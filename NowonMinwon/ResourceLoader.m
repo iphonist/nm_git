@@ -62,7 +62,7 @@
 #pragma mark - Data Array
 - (void)settingContactList
 {
-	NSLog(@"init Contacts");
+//	NSLog(@"init Contacts");
 	NSMutableArray *contactArray = [SQLiteDBManager getContact];
 		
 //    for(int j = 0; j < [contactArray count]; j++) {
@@ -83,7 +83,7 @@
 	
 //	[contactArray sortUsingDescriptors:[NSArray arrayWithObjects:sortName,nil]];
     [self.allContactList setArray:contactArray];
-    NSLog(@"Contacts initializing complete. %d",(int)[self.allContactList count]);
+//    NSLog(@"Contacts initializing complete. %d",(int)[self.allContactList count]);
 
 }
 
@@ -92,7 +92,7 @@
 }
 - (void)settingDeptList
 {
-	NSLog(@"init DeptList");
+//	NSLog(@"init DeptList");
     NSMutableArray *deptArray = [SQLiteDBManager getDept];
 
     
@@ -110,7 +110,7 @@
 #pragma mark - Data Search
 - (NSArray *)deptRecursiveSearch:(NSString*)myCode
 {
-    NSLog(@"mycode %@",myCode);
+//    NSLog(@"mycode %@",myCode);
 	NSMutableArray *selectedDeptArray = [NSMutableArray array];
 	[selectedDeptArray addObject:myCode];
 	
@@ -153,7 +153,7 @@
 			break;
         }
     }
-    NSLog(@"returnName %@",userName);
+//    NSLog(@"returnName %@",userName);
     return userName;
 }
 
